@@ -1,0 +1,90 @@
+<div class="login-box">	
+  
+   <% if (cls === 'MNG') { %>
+  <h2>회원 추가</h2>
+  <% } else {%>
+  <h2>회원 가입</h2>
+  <%}%>
+
+  <div class="form-group">
+    <label>프로필 사진 </label>
+    <br>
+    <img src="/images/user.png" width="100px" height="100px" style="object-fit: cover; border-radius: 50%;">
+  </div>
+
+ 
+  <form action="/register/register_process" method="post">
+    
+    <div class="form-group">
+    <br>
+      <label>아이디(수정불가)</label>
+      <input type="text" name="loginid" id="id" class="form-control large-input" placeholder="아이디를 입력하세요">
+    </div>
+     <div class="form-group">
+      <label>비밀번호</label>
+      <input type="text" name="password" class="form-control large-input" placeholder="비밀번호를 입력하세요">
+    </div>
+
+<% if (cls != 'MNG') { %>
+<input type="hidden" name="class" value="CST">
+<% } %>
+
+    <div class="form-group">
+      <label>이름</label>
+      <input type="text" name="name" class="form-control large-input" placeholder="이름을 입력하세요">
+    </div>
+
+    
+    <div class="form-group">
+      <label>성별</label>
+      <% let m = '', f = ''; %>
+      <input type="radio" name="mf" value="m" /> 남자&nbsp;&nbsp;&nbsp;
+      <input type="radio" name="mf" value="f" /> 여자
+    </div>
+
+
+
+    <div class="form-group">
+      <label>생년월일</label>
+      <input type="date" name="birth" class="form-control large-input" placeholder="생년월일을 입력하세요">
+    </div>
+
+    <div class="form-group">
+      <label>휴대전화</label>
+      <input type="text" name="tel" class="form-control large-input" placeholder="000-0000-0000">
+    </div>
+    
+    
+    <div class="form-group">
+      <label>주소</label> 
+      <input type="text" name="address" class="form-control large-input" placeholder="주소를 입력하세요">
+    </div>
+
+     <% if (cls === 'MNG') { %>
+    <div class="form-group">
+        <label>클래스</label>
+        <select id="class" name="class" required>
+        <option value="" disabled selected>클래스를 선택해주세요.</option>
+        <option value="CST" >고객</option>
+        <option value="MNG" >관리자</option>
+        <option value="CEO" >경영진</option>
+
+        </select>
+ </div>
+      <% } %>
+
+
+
+
+
+    <button type="submit" class="btn btn-primary big-login-btn">가입하기</button>
+  </form>
+</div>
+
+<script>
+function displayFileName() {
+    var input = document.getElementById('file');
+    var fileName = input.files.length > 0 ? input.files[0].name : '';
+    document.querySelector('.upload-name').value = fileName;
+}
+</script>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>채팅</title>
+</head>
+<body>
+  <h2>로그인 사용자: <%= user.username %></h2>
+  <input type="text" id="to" placeholder="받는 사람">
+  <input type="text" id="msg" placeholder="메시지">
+  <button onclick="sendMessage()">전송</button>
+
+  <ul id="chat"></ul>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/chat.js"></script>
+</body>
+</html>

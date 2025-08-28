@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+
+  <title>중고책거래 서비스  </title>
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="logo-box">
+    <a href="/" class="logo">중고책거래 서비스</a>
+    <% if (login) { %>
+    <span class="welcome">| <%= who %>님 반갑습니다!</span>
+    <% } %>
+    </div>
+    
+    <ul>
+  <li class="dropdown-parent">
+  <a href="#">카테고리 검색하기 ▾</a>
+  <ul class="dropdown-menu">
+    <!-- 빠른 검색 -->
+    <li class="dropdown-submenu">
+      <a href="#">빠른 검색 ▾</a>
+      <ul class="submenu">
+        <% for (var k = 0; k < categ.length; k++) { %>
+          <li><a href="/categ/menu/<%= categ[k].bigcon %>"><%- categ[k].bigname %></a></li>
+        <% } %>
+      </ul>
+    </li>
+
+    <!-- 세부 검색 -->
+    <li><a href="/categ">세부 검색</a></li>
+  </ul>
+</li>
+
+
+
+    <li class="dropdown-parent">
+        <a href="#">마이페이지 ▾</a>
+        <ul class="dropdown-menu">
+          <li><a href="/book/create">내 책 팔기</a></li>
+          <li><a href="/view">나의 활동</a></li>
+          <li><a href="/category/html-css">찜한 책</a></li>
+        </ul>
+      </li>
+
+      <% if (cls=='MNG') { %>
+      <li class="dropdown-parent">
+        <a href="#">관리자용 메뉴 ▾</a>
+        <ul class="dropdown-menu">
+          <li><a href="/admin/person">회원 관리</a></li>
+          <li><a href="/admin/categ">카테고리 관리</a></li>
+          <li><a href="/admin/book">책 관리</a></li>
+        </ul>
+      </li>
+<% } %>
+      <!-- 프로필 드롭다운 -->
+      <li class="dropdown-parent">
+          <a href="#">프로필 ▾</a>
+          <ul class="dropdown-menu">
+              <% if (!login) { %>
+                  <li><a href="/register/login">로그인</a></li>
+                  <li><a href="/register/register">회원가입</a></li>
+              <% } else { %>
+                  <li><a href="/register/profile">내 프로필</a></li>
+              <% } %>
+          </ul>
+      </li>
+
+            <!-- 로그아웃 버튼은 바깥 메뉴로 -->
+            <% if (login) { %>
+            <li>
+                <b><a href="/register/logout">로그아웃</a></b>
+            </li>
+            <% } %>
+
+
+      <li class="dropdown-parent">
+        <% if (login==false) { %>
+        <a href="/register/login"><img src="/images/guest.png" width="30px" height="30px"></a>
+        <% } else{ %>
+          <a href="/register/profile"><img src="/images/<%=result[0].image%>" width="30px" height="30px"></a>
+        <% } %>
+        
+      </li>
+    </ul>
+  </div>
+  
+  <div class="chat-buttons-container">
+  <a href="/book/create" class="chat-button">+</a>
+  <a href="/chat" class="chat-button">💬 CHAT</a>
+</div>
+
+
+  
+    
+ <%- include(body) %>
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<div class="login-box">	
+  
+ 
+  <% if (cu==='c') { %>
+
+   <h2>코드 추가</h2> 
+  <form action="/admin/addcode_process" method="post">
+    
+    <div class="form-group">
+    <br>
+      <label>대분류 코드</label>
+      <input type="text" name="bigcon" id="id" class="form-control large-input" placeholder="대분류 코드를 입력하세요">
+    </div>
+     <div class="form-group">
+      <label>대분류 이름</label>
+      <input type="text" name="bigname" class="form-control large-input" placeholder="대분류 이름을 입력하세요">
+    </div>
+
+    <div class="form-group">
+      <label>소분류 코드</label>
+      <input type="text" name="mincon" class="form-control large-input" placeholder="소분류 코드를 입력하세요">
+    </div>
+    
+    
+    <div class="form-group">
+      <label>소분류 이름</label> 
+      <input type="text" name="minname" class="form-control large-input" placeholder="소뷴류 이름을 입력하세요">
+    </div>
+
+
+
+    <button type="submit" class="btn btn-primary big-login-btn">추가하기</button>
+  </form>
+  <%}%>
+
+
+  <% if (cu==='u') { %>
+   <h2>코드 수정</h2>
+
+
+  <form action="/admin/updatecode_process" method="post">
+    
+    <div class="form-group">
+    <br>
+      <label>대분류 코드</label>
+      <input type="text" name="bigcon" id="id" class="form-control large-input" value="<%=categ[0].bigcon%>">
+    </div>
+     <div class="form-group">
+      <label>대분류 이름</label>
+      <input type="text" name="bigname" class="form-control large-input"  value="<%=categ[0].bigname%>">
+    </div>
+
+    <div class="form-group">
+      <label>소분류 코드</label>
+      <input type="text" name="mincon" class="form-control large-input"  value="<%=categ[0].mincon%>">
+    </div>
+    
+    
+    <div class="form-group">
+      <label>소분류 이름</label> 
+      <input type="text" name="minname" class="form-control large-input"  value="<%=categ[0].minname%>">
+    </div>
+    
+<input type="hidden" name="oldbig" value="<%= categ[0].bigcon %>">
+<input type="hidden" name="oldmin" value="<%= categ[0].mincon %>">
+
+
+
+    <button type="submit" class="btn btn-primary big-login-btn">수정하기</button>
+  </form>
+  <%}%>
+
+
+
+</div>

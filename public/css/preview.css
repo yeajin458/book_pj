@@ -1,0 +1,45 @@
+<style>
+  .circle-frame {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #ccc;
+    margin: 20px auto;
+    position: relative;
+  }
+  .circle-frame img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    object-fit: cover;
+    user-select: none;
+    transition: transform 0.2s ease;
+  }
+  .slider-container {
+    width: 150px;
+    margin: 10px auto;
+  }
+  input[type="range"] {
+    width: 100%;
+  }
+</style>
+
+<div class="circle-frame">
+  <img id="preview" src="/images/user.png" alt="프로필 사진" style="width: 150px; height: 150px;">
+</div>
+
+<div class="slider-container">
+  <input type="range" id="sizeSlider" min="1" max="3" step="0.01" value="1">
+</div>
+
+<script>
+  const preview = document.getElementById('preview');
+  const slider = document.getElementById('sizeSlider');
+
+  slider.addEventListener('input', () => {
+    const scale = slider.value;
+    preview.style.transform = `translate(-50%, -50%) scale(${scale})`;
+  });
+</script>

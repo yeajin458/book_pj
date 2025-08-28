@@ -1,0 +1,50 @@
+<div class="detail-container">
+  <div class="detail-image">
+    <img src="/images/<%= book[0].image %>" alt="책 이미지">
+  </div>
+  <div class="detail-info">
+    
+    <h2><%= book[0].bookname %></h2>
+    <p><strong>저자:</strong> <%= book[0].author %></p>
+    <p><strong>가격: <%= book[0].price %>원</strong></p>
+    <p><strong>판매자:</strong> <%= book[0].seller %></p>
+    <p><strong>설명:</strong> <%= book[0].content || '설명이 없습니다.' %></p>
+    <p><strong>게시일:</strong> <%= book[0].date.toLocaleString('ko-KR')%></p>
+
+    
+    
+  <div class="icon-actions">
+  <a href="/" class="icon-item">
+    <img src="/images/back.png" alt="돌아가기 아이콘" height="40">
+    <span>이전</span>
+  </a>
+
+  
+     <a href="/chat/room/<%= book[0].loginid %>" class="icon-item" >
+    <img src="/images/transfer.png" alt="거래중 아이콘" height="40">
+    <span>거래하기</span>
+    </a>
+
+
+  <!-- <div class="icon-item">
+    <img src="/images/buy.png" alt="거래하기 아이콘" height="40">
+    <span>장바구니</span>
+  </div> -->
+
+ 
+  <form action="/book/<%=book[0].bnum%>/like" method="POST" style="display:inline;">
+    <button type="submit" style="border:none; background:none; padding:0; cursor:pointer;">
+      <img src="/images/like.png" alt="찜하기 아이콘" height="40">
+    </button>
+    <span><br> 마음 수: <%=book[0].h%></span>
+
+    <input type="hidden" name="h" value="<%=book[0].h + 1 %>">
+  </form>
+  </div>
+</div>
+
+
+
+</div>
+
+

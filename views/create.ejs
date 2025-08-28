@@ -1,0 +1,76 @@
+<div class="login-box">	
+
+    
+  <h2>내 책 등록하기</h2>
+    
+  <form action="/book/create_process" method="post" enctype="multipart/form-data" style="margin-bottom: 20px;">
+
+    <div class="form-group"><label>사진 올리기 </label></div>
+    <div class="filebox">
+      <input class="upload-name"  value="" placeholder="첨부파일" readonly>&nbsp;&nbsp; 
+      <label for="file" class="btn-mini">파일찾기</label>&nbsp;&nbsp; 
+      <input type="file" id="file" name="uploadFile" onchange="displayFileName()" style="display: none;" >
+      
+    </div>
+
+      <input type="hidden" name="seller" value="<%=who%>" >
+      
+    
+    <div class="form-group">
+    <br>
+      <label>책 제목</label>
+      <input type="text" name="bookname" id="id" class="form-control large-input" >
+    </div>
+
+    <div class="form-group">
+      <label>저자</label>
+      <input type="text" name="author" class="form-control large-input">
+    </div>
+
+    <div class="form-group">
+      <label>가격</label>
+      <input type="text" name="price" class="form-control large-input" placeholder="숫자만 입력하세요.(원)" >
+    </div>
+    
+    <div class="form-group">
+      <label>내용</label>
+      <textarea name="content" class="form-control large-input" placeholder="책 소개나 거래를 위해 필요한 정보를 자유롭게 적어주세요" rows="20"></textarea>
+    </div>
+
+
+   <div class="form-group">
+        <label>대분류</label>
+        <select id="categ" name="categ1" required>
+        <option value="" disabled selected>카테고리를 선택해주세요.</option>
+        <% var k=0;
+                while (k<categ.length) { %> 
+            <option value="<%=categ[k].bigcon%>"><%=categ[k].bigname%></option>
+            <% k++ } %>
+                    
+        </select>
+ </div>
+    <div class="form-group">
+        <label>소분류</label>
+        <select id="categ" name="categ2" required>
+        <option value="" disabled selected>카테고리를 선택해주세요.</option>
+        <% var k=0;
+                while (k<book.length) { %> 
+            <option value="<%=book[k].mincon%>"><%=book[k].minname%></option>
+            <% k++ } %>
+                    
+        </select>
+ </div>
+
+
+
+    <button type="submit" class="btn btn-primary big-login-btn">업로드</button>
+  </form>
+</div>
+
+<script>
+function displayFileName() {
+    var input = document.getElementById('file');
+    var fileName = input.files.length > 0 ? input.files[0].name : '';
+    document.querySelector('.upload-name').value = fileName;
+}
+</script>

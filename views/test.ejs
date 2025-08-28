@@ -1,0 +1,39 @@
+<div class="home-content2">
+  <!-- 검색창 -->
+  <div class="search-bar">
+    <form class="d-flex" role="search" action="/search" method="post">
+      <input class="form-control me-1" style="width: 200px; height: 30px;" type="search"
+        placeholder="검색하기" aria-label="Search" name="search">
+      <button class="btn btn-mini" type="submit">Search</button>
+    </form>
+  </div>
+
+  <br>
+
+  <!-- 카드 목록 -->
+  <div class="card-grid">
+    <% for (let i = 0; i < book.length; i++) { %>
+      <div class="card">
+        <a href="/book/detail/<%= book[i].bnum %>">
+          <img src="/images/<%= book[i].image %>" alt="책 이미지" class="book-img">
+        </a>
+        <div class="card-body">
+          <h5 class="card-title"><%= book[i].bookname %></h5>
+          <p class="card-text">
+            저자: <%= book[i].author %><br>
+            가격: <strong><%= book[i].price %>원</strong><br>
+            판매자: <%= book[i].seller %>
+          </p>
+        </div>
+        <% if (who === book[i].seller) { %>
+          <div class="card-footer d-flex justify-content-between">
+            <a href="/book/update/<%= book[i].bnum %>" class="btn btn-sm btn-warning">수정</a>
+          
+            <a href="/book/delete_process/<%= book[i].bnum %>" class="btn btn-sm btn-danger"
+              onclick="return confirm('정말로 삭제하시겠습니까?')">삭제</a>
+          </div>
+        <% } %>
+      </div>
+    <% } %>
+  </div>
+</div>

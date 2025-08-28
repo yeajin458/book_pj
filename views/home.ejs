@@ -1,0 +1,20 @@
+<div class="login-box">
+  <h1>채팅 홈</h1>
+  <br>
+
+  <% for (let k = 0; k < chat.length; k++) { %>
+    <% if (chat[k].name !== who) { %>
+      <div class="chat-item">
+        <img src="/images/<%= chat[k].image %>" alt="chat image" width="60" height="60">
+
+        <div class="chat-info">
+          <%= chat[k].name %>
+          <a href="/chat/room/<%= chat[k].loginid %>" class="chat-link">
+            <%= chat[k].name %>님과 채팅하기
+          </a>
+        </div>
+        <br><br>
+      </div>
+    <% } %>
+  <% } %>
+</div>
