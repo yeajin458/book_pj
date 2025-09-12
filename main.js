@@ -59,7 +59,7 @@ app.use('/admin',adminRouter)
 app.use('/chat',chatRouter)
 
 app.get('/favicon.ico',(req,res)=>res.writeHead(404))
-server.listen(3000, () => {
-  console.log('서버 실행 중 http://localhost:3000');
-});
 
+server.listen(3000, '0.0.0.0', () => {
+  console.log("서버 실행 중 http://0.0.0.0:3000");
+});
