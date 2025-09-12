@@ -9,7 +9,7 @@
   <div id="chat-container">
     <div class="chat-header">
       <h2><%= who %> ↔ <%= target[0].name %> 1:1 채팅</h2>
-      <a href="/chat" class="back-to-chatlist">채팅방 메뉴로 돌아가기</a>
+      <a href="/chat" class="back-to-chatlist">채팅방  돌아가기</a>
     </div>
 
     <ul id="chat"></ul>
@@ -39,14 +39,17 @@
     socket.emit('join_room', room); // 방 참가 요청
 
     // 메시지 출력 함수 (아이디 없이 메시지만 출력)
-    function appendMessage(text, type) {
-      const li = document.createElement('li');
-      li.textContent = text;
-      li.classList.add(type);
-      chatList.appendChild(li);
+  function appendMessage(text, type) {
+  const li = document.createElement('li');
+  li.textContent = text;
+  li.classList.add(type);
+  chatList.appendChild(li);
 
-      chatList.scrollTop = chatList.scrollHeight;
-    }
+  // 메시지 추가 후 스크롤을 항상 최신으로 이동
+  requestAnimationFrame(() => {
+    chatList.scrollTop = chatList.scrollHeight;
+  });
+}
 
     // 메시지 전송
     function sendMessage() {

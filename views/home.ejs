@@ -3,7 +3,7 @@
   <br>
 
   <% for (let k = 0; k < chat.length; k++) { %>
-    <% if (chat[k].name !== who) { %>
+    <% if (chat[k].name !== who && chat[k].name!=='관리자') { %>
       <div class="chat-item">
         <img src="/images/<%= chat[k].image %>" alt="chat image" width="60" height="60">
 
@@ -16,5 +16,7 @@
         <br><br>
       </div>
     <% } %>
+
   <% } %>
+  
 </div>
