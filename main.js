@@ -1,13 +1,5 @@
 //202331989 박예진
 //1. import 코드들
-const mysql = require('mysql2/promise');
-mysql.createConnection({
-    host:'localhost',
-    user:'root',
-    password:'1234',
-    database:'proj'
-}).then(conn => conn.query('SHOW TABLES').then(([rows]) => console.log(rows)));
-
 const express=require('express')
 var session=require('express-session')
 var MySqlStore=require('express-mysql-session')(session)
