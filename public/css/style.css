@@ -196,7 +196,7 @@
 }
 
 /* 토글 hover 시 메뉴 나타나게 */
-.chat-buttons-wrapper:hover .chat-buttons-container {
+.chat-toggle:hover + .chat-buttons-container {
   opacity: 1;
   transform: translateY(0); /* 위로 올라오면서 나타남 */
   pointer-events: auto;
