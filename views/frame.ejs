@@ -90,13 +90,12 @@
   </div>
    
   <div class="chat-buttons-wrapper">
-
+<div class="chat-toggle">👉빠른 메뉴</div>
   <div class="chat-buttons-container">
   <a href="/book/create" class="chat-button">내 책 팔기</a>
   <a href="/chat" class="chat-button">💬CHAT</a>
-  <a href="/chat/room/m" class="chat-button">관리자에게 문의하기</a>
+  <a href="/chat/room/m" class="chat-button">문의하기</a>
 </div>
-<div class="chat-toggle">👉빠른 메뉴</div>
 </div>
 
 
@@ -106,3 +105,18 @@
 
 </body>
 </html>
+<script>
+const toggle = document.querySelector('.chat-toggle');
+const menu = document.querySelector('.chat-buttons-container');
+
+toggle.addEventListener('click', (e) => {
+  e.stopPropagation(); // 클릭 이벤트 버블링 차단
+  menu.classList.toggle('active');
+});
+
+// 메뉴 내부 클릭 시도 버블링 차단
+menu.addEventListener('click', (e) => e.stopPropagation());
+
+// 외부 클릭 시 메뉴 닫기
+document.addEventListener('click', () => menu.classList.remove('active'));
+</script>
